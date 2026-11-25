@@ -20,22 +20,33 @@
 <body>
 
 <h1>HaystoneBot</h1>
-<p class="note">Español · <a href="#english">English below</a></p>
+<p class="note">Español · <a href="#english">English below</a> · Actualizado / updated: 25-11-2026</p>
 
 <p>HaystoneBot es el rastreador web de <strong>Haystone S.L.</strong> (Barcelona, España). Si ha visto
 <code>HaystoneBot</code> en los registros de su servidor, esta página explica qué hace y cómo impedirlo.</p>
 
 <h2>Qué hace</h2>
-<p>Estamos preparando un buscador de productos que envía a los compradores directamente a la web de cada tienda,
-sin anuncios y sin comisiones. En esta fase HaystoneBot hace un estudio breve: comprueba qué tiendas en línea
-de España publican datos de producto en formato estándar.</p>
+<p>Estamos preparando un buscador de productos que envía a los compradores directamente a la web de cada tienda.
+El servicio será gratuito para los compradores. Se financiará con comisiones de afiliación de algunas tiendas;
+aparecer en él no cuesta nada a ninguna tienda.</p>
+<p>HaystoneBot hace dos tipos de visita:</p>
+<ul>
+  <li><strong>Visita de reconocimiento:</strong> comprueba si un sitio es una tienda en línea y si publica datos de
+      producto en formato estándar. Como máximo 8 peticiones.</li>
+  <li><strong>Lectura del catálogo:</strong> en las tiendas que lo permiten, lee las páginas de producto para
+      mostrar sus productos en el buscador, con un enlace a la página de la tienda.</li>
+</ul>
 
 <h2>Cómo se comporta</h2>
 <ul>
   <li>Se identifica siempre con el nombre <code>HaystoneBot</code> y la dirección de esta página.</li>
   <li>Respeta <code>robots.txt</code>, incluido <code>Crawl-delay</code>.</li>
-  <li>Hace como máximo 8 peticiones por sitio en cada visita, con al menos 2 segundos entre ellas.</li>
-  <li>Lee solo páginas públicas: la página de inicio, el mapa del sitio y unas pocas páginas de producto.</li>
+  <li>Hace como máximo una petición cada 3 segundos a un mismo sitio, y como máximo 2.000 páginas por sitio y día.</li>
+  <li>Vuelve a leer un catálogo completo como máximo una vez por semana. Además, puede comprobar el precio y la
+      disponibilidad de un producto concreto cuando un comprador está a punto de visitarlo.</li>
+  <li>Usa el mapa del sitio para no pedir páginas innecesarias. Si la tienda ofrece una interfaz de catálogo para
+      servicios automatizados, la usa en lugar de leer las páginas.</li>
+  <li>Lee solo páginas públicas: la página de inicio, el mapa del sitio y páginas de producto.</li>
   <li>No inicia sesión, no rellena formularios, no añade productos a la cesta y no intenta saltarse
       ninguna protección contra bots. Si su sitio lo rechaza, se retira.</li>
   <li>Respeta la reserva de minería de textos y datos (<code>tdm-reservation</code>) y la señal
@@ -43,15 +54,17 @@ de España publican datos de producto en formato estándar.</p>
 </ul>
 
 <h2>Qué guardamos</h2>
-<p>Datos sobre el sitio, no sobre personas: qué plataforma usa, si publica datos de producto estándar, si
-permite el acceso automatizado y una muestra pequeña de datos de producto (nombre, precio, marca). No guardamos datos personales ni copias de sus páginas, y no usamos
-su contenido para entrenar modelos de inteligencia artificial.</p>
+<p>Datos sobre el sitio (plataforma, si publica datos de producto, si permite el acceso automatizado) y datos de
+sus productos: nombre, precio, marca, tallas o variantes, disponibilidad, la dirección de la página del producto
+y la dirección de su imagen. No guardamos copias de sus páginas ni de sus imágenes, ni datos personales, y no
+usamos su contenido para entrenar modelos de inteligencia artificial.</p>
 
-<h2>Cómo impedir el acceso</h2>
+<h2>Cómo impedir el acceso o corregir sus datos</h2>
 <p>Añada estas líneas a su <code>robots.txt</code>:</p>
 <pre>User-agent: HaystoneBot
 Disallow: /</pre>
-<p>También puede escribirnos y excluiremos su sitio a mano: <strong><a href="mailto:haystonebot@proton.me">haystonebot@proton.me</a></strong></p>
+<p>También puede escribirnos para que excluyamos su sitio, borremos sus datos o corrijamos un error:
+<strong><a href="mailto:haystonebot@proton.me">haystonebot@proton.me</a></strong></p>
 
 <hr>
 
@@ -61,16 +74,27 @@ Disallow: /</pre>
 <code>HaystoneBot</code> in your server logs, this page explains what it does and how to stop it.</p>
 
 <h2>What it does</h2>
-<p>We are preparing a product search service that sends buyers straight to each shop's own website, with no
-adverts and no commissions. At this stage HaystoneBot is running a short survey: it checks which online shops
-in Spain publish product data in standard form.</p>
+<p>We are preparing a product search service that sends buyers straight to each shop's own website. The service
+will be free for shoppers. It will be funded by affiliate commission from some shops; being listed costs a shop
+nothing.</p>
+<p>HaystoneBot makes two kinds of visit:</p>
+<ul>
+  <li><strong>Survey visit:</strong> it checks whether a site is an online shop and whether it publishes product
+      data in standard form. At most 8 requests.</li>
+  <li><strong>Catalogue reading:</strong> on shops that allow it, it reads product pages so that their products
+      can appear in the search service, with a link to the shop's own page.</li>
+</ul>
 
 <h2>How it behaves</h2>
 <ul>
   <li>It always identifies itself as <code>HaystoneBot</code> and gives the address of this page.</li>
   <li>It obeys <code>robots.txt</code>, including <code>Crawl-delay</code>.</li>
-  <li>It makes at most 8 requests per site per visit, at least 2 seconds apart.</li>
-  <li>It reads public pages only: the home page, the sitemap and a few product pages.</li>
+  <li>It makes at most one request every 3 seconds to any one site, and at most 2,000 pages per site per day.</li>
+  <li>It re-reads a full catalogue at most once a week. It may also check the price and availability of a single
+      product when a shopper is about to visit it.</li>
+  <li>It uses the sitemap to avoid unnecessary requests. Where a shop offers a catalogue interface for automated
+      services, it uses that instead of reading pages.</li>
+  <li>It reads public pages only: the home page, the sitemap and product pages.</li>
   <li>It does not log in, fill in forms, add items to a basket or try to get past any bot protection.
       If your site refuses it, it leaves.</li>
   <li>It honours the text-and-data-mining reservation (<code>tdm-reservation</code>) and
@@ -78,15 +102,17 @@ in Spain publish product data in standard form.</p>
 </ul>
 
 <h2>What we keep</h2>
-<p>Facts about the site, not about people: which platform it runs on, whether it publishes standard product
-data, whether it allows automated access, and a small sample of product facts (name, price, brand). We keep no personal data and no copies of your pages, and we do
-not use your content to train AI models.</p>
+<p>Facts about the site (platform, whether it publishes product data, whether it allows automated access) and
+facts about its products: name, price, brand, sizes or variants, availability, the address of the product page
+and the address of its image. We keep no copies of your pages or images and no personal data, and we do not use
+your content to train AI models.</p>
 
-<h2>How to block it</h2>
+<h2>How to block it or correct your data</h2>
 <p>Add these lines to your <code>robots.txt</code>:</p>
 <pre>User-agent: HaystoneBot
 Disallow: /</pre>
-<p>You can also write to us and we will exclude your site by hand: <strong><a href="mailto:haystonebot@proton.me">haystonebot@proton.me</a></strong></p>
+<p>You can also write to us to have your site excluded, your data deleted or an error corrected:
+<strong><a href="mailto:haystonebot@proton.me">haystonebot@proton.me</a></strong></p>
 
 </body>
 </html>
