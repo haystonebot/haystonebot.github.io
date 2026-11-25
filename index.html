@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HaystoneBot: información sobre nuestro rastreador / about our crawler</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; color: #1d1d1f;
+         max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 1.7rem; margin-bottom: 0.2em; }
+  h2 { font-size: 1.15rem; margin-top: 2em; }
+  code, pre { background: #f2f2f4; border-radius: 6px; font-size: 0.95em; }
+  code { padding: 2px 6px; }
+  pre { padding: 12px 14px; overflow-x: auto; }
+  hr { border: 0; border-top: 1px solid #d8d8dc; margin: 3em 0; }
+  .note { color: #555; font-size: 0.95em; }
+  a { color: #0a58ca; }
+</style>
+</head>
+<body>
+
+<h1>HaystoneBot</h1>
+<p class="note">Español · <a href="#english">English below</a></p>
+
+<p>HaystoneBot es el rastreador web de <strong>Haystone S.L.</strong> (Barcelona, España). Si ha visto
+<code>HaystoneBot</code> en los registros de su servidor, esta página explica qué hace y cómo impedirlo.</p>
+
+<h2>Qué hace</h2>
+<p>Estamos preparando un buscador de productos que envía a los compradores directamente a la web de cada tienda,
+sin anuncios y sin comisiones. En esta fase HaystoneBot hace un estudio breve: comprueba qué tiendas en línea
+de España publican datos de producto en formato estándar.</p>
+
+<h2>Cómo se comporta</h2>
+<ul>
+  <li>Se identifica siempre con el nombre <code>HaystoneBot</code> y la dirección de esta página.</li>
+  <li>Respeta <code>robots.txt</code>, incluido <code>Crawl-delay</code>.</li>
+  <li>Hace como máximo 8 peticiones por sitio en cada visita, con al menos 2 segundos entre ellas.</li>
+  <li>Lee solo páginas públicas: la página de inicio, el mapa del sitio y unas pocas páginas de producto.</li>
+  <li>No inicia sesión, no rellena formularios, no añade productos a la cesta y no intenta saltarse
+      ninguna protección contra bots. Si su sitio lo rechaza, se retira.</li>
+  <li>Respeta la reserva de minería de textos y datos (<code>tdm-reservation</code>) y la señal
+      <code>Content-Signal: search=no</code>.</li>
+</ul>
+
+<h2>Qué guardamos</h2>
+<p>Datos sobre el sitio, no sobre personas: qué plataforma usa, si publica datos de producto estándar, si
+permite el acceso automatizado y una muestra pequeña de datos de producto (nombre, precio, marca). No guardamos datos personales ni copias de sus páginas, y no usamos
+su contenido para entrenar modelos de inteligencia artificial.</p>
+
+<h2>Cómo impedir el acceso</h2>
+<p>Añada estas líneas a su <code>robots.txt</code>:</p>
+<pre>User-agent: HaystoneBot
+Disallow: /</pre>
+<p>También puede escribirnos y excluiremos su sitio a mano: <strong><a href="mailto:haystonebot@proton.me">haystonebot@proton.me</a></strong></p>
+
+<hr>
+
+<h1 id="english">HaystoneBot</h1>
+
+<p>HaystoneBot is the web crawler of <strong>Haystone S.L.</strong> (Barcelona, Spain). If you have seen
+<code>HaystoneBot</code> in your server logs, this page explains what it does and how to stop it.</p>
+
+<h2>What it does</h2>
+<p>We are preparing a product search service that sends buyers straight to each shop's own website, with no
+adverts and no commissions. At this stage HaystoneBot is running a short survey: it checks which online shops
+in Spain publish product data in standard form.</p>
+
+<h2>How it behaves</h2>
+<ul>
+  <li>It always identifies itself as <code>HaystoneBot</code> and gives the address of this page.</li>
+  <li>It obeys <code>robots.txt</code>, including <code>Crawl-delay</code>.</li>
+  <li>It makes at most 8 requests per site per visit, at least 2 seconds apart.</li>
+  <li>It reads public pages only: the home page, the sitemap and a few product pages.</li>
+  <li>It does not log in, fill in forms, add items to a basket or try to get past any bot protection.
+      If your site refuses it, it leaves.</li>
+  <li>It honours the text-and-data-mining reservation (<code>tdm-reservation</code>) and
+      <code>Content-Signal: search=no</code>.</li>
+</ul>
+
+<h2>What we keep</h2>
+<p>Facts about the site, not about people: which platform it runs on, whether it publishes standard product
+data, whether it allows automated access, and a small sample of product facts (name, price, brand). We keep no personal data and no copies of your pages, and we do
+not use your content to train AI models.</p>
+
+<h2>How to block it</h2>
+<p>Add these lines to your <code>robots.txt</code>:</p>
+<pre>User-agent: HaystoneBot
+Disallow: /</pre>
+<p>You can also write to us and we will exclude your site by hand: <strong><a href="mailto:haystonebot@proton.me">haystonebot@proton.me</a></strong></p>
+
+</body>
+</html>
